@@ -1,0 +1,16 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Clipboard" [shape=record, label="{Clipboard|}"]
+	"Folder" [shape=Mrecord, label="{Folder|id :integer\lname :string\lparent_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Group" [shape=Mrecord, label="{Group|id :integer\lname :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Permission" [shape=Mrecord, label="{Permission|id :integer\lfolder_id :integer\lgroup_id :integer\lcan_create :boolean\lcan_read :boolean\lcan_update :boolean\lcan_delete :boolean\l}"]
+	"ShareLink" [shape=Mrecord, label="{ShareLink|id :integer\lemails :string\llink_token :string\llink_expires_at :datetime\luser_file_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lname :string\lemail :string\lhashed_password :string\lpassword_salt :string\lis_admin :string\lremember_token :string\lreset_password_token :string\lreset_password_token_expires_at :datetime\lcreated_at :datetime\lupdated_at :datetime\lsignup_token :string\lsignup_token_expires_at :datetime\l}"]
+	"UserFile" [shape=Mrecord, label="{UserFile|id :integer\lattachment_file_name :string\lattachment_content_type :string\lattachment_file_size :integer\lattachment_updated_at :datetime\lfolder_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Folder" -> "Folder" [label="children", arrowtail=odot, arrowhead=crow, dir=both color="#BC2DDB"]
+	"Folder" -> "UserFile" [arrowtail=odot, arrowhead=crow, dir=both color="#7C42EB"]
+	"Folder" -> "Permission" [arrowtail=odot, arrowhead=crow, dir=both color="#BF8640"]
+	"Group" -> "Permission" [arrowtail=odot, arrowhead=crow, dir=both color="#F467E1"]
+	"Group" -> "User" [arrowtail=crow, arrowhead=crow, dir=both color="#2F4302"]
+	"UserFile" -> "ShareLink" [arrowtail=odot, arrowhead=crow, dir=both color="#674918"]
+}
