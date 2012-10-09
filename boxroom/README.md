@@ -1,3 +1,10 @@
+# Updates
+
+Domain Model diagram is in file erd.pdf
+
+My (Paulius) attempt to convert domain model to clafer notation is in model.cfr.
+
+
 # Boxroom
 
 [![Build Status](https://secure.travis-ci.org/mischa78/boxroom.png)](http://travis-ci.org/mischa78/boxroom)
