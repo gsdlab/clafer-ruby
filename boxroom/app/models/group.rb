@@ -4,12 +4,19 @@ class Group < ActiveRecord::Base
 
   attr_accessible :name
 
+  include Clafer
+  clafer_model true do
+    subclafers_of_type :string, :name 
+    subclafer_ref :permissions
+    subclafer_ref :users , {:card => {:min => 0, :max => '10' } } 
+  end
+
+
   validates_uniqueness_of :name
   validates_presence_of :name
 
   after_create :create_admin_permissions, :if => :admins_group?
   after_create :create_permissions, :unless => :admins_group?
-  before_destroy :dont_destroy_admins
 
   def admins_group?
     name == 'Admins'

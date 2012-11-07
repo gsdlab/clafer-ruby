@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation, :password_required, :dont_clear_reset_password_token
   attr_accessible :name, :email, :password, :password_confirmation, :password_required
 
+  include Clafer
+  clafer_model true do
+    subclafer_ref :groups
+    subclafers_of_type :string, :name, :email, :is_admin
+
+  end
+
+
   validates_confirmation_of :password
   validates_length_of :password, :in => 6..20, :allow_blank => true
   validates_presence_of :password, :if => :password_required

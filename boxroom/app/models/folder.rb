@@ -4,6 +4,14 @@ class Folder < ActiveRecord::Base
   has_many :user_files, :dependent => :destroy, :order => 'attachment_file_name'
   has_many :permissions, :dependent => :destroy
 
+  include Clafer
+  clafer_model true do
+    subclafers :user_files, :permissions
+    subclafers_of_type :string, :name 
+    # subclafer_ref :shared_links, :through => :user_files
+  end
+
+
   attr_accessor :is_copied_folder
   attr_accessible :name
 

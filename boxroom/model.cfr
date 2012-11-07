@@ -1,13 +1,9 @@
 abstract Folder
-	folders -> Folder *
-	permissions -> Permission *
-	files -> UserFile *
-	[
-	files.folder = this
-	]
+	folders : Folder * 
+	permissions : Permission *
+	files : UserFile *
 
 abstract UserFile
-	folder -> Folder
 	content_type : string
 	file_name : string
 	file_size : integer
@@ -16,35 +12,26 @@ abstract UserFile
 		emails -> string +
 		link_expires_at: string
 		link_token : string
+	folder -> Folder
 
 abstract Permission
 	can_create ?
 	can_delete ?
 	can_read ?
 	can_update ?
-	group -> Group
-	folder -> Folder
-	[this.folder.permissions=this]
 
 abstract User
 	email : string
-	hashed_password : string
 	is_admin : string
 	name : string
-	password_salt : string
-	remember_token : string
-	reset_password_token : string
-	reset_password_token : string
-	reset_password_token_expires_at : string
-	signup_token : string
-	signup_token_expires_at : string
 	groups -> Group *
 
 abstract Group
 	name : string
 	users -> User *
 	permissions -> Permission *
-	[users.groups = this]
+
+
 
 //Sample
 

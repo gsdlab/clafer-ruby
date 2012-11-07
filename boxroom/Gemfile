@@ -20,8 +20,11 @@ group :assets do
 end
 
 group :development, :test do
-    gem 'railroady'
-    gem "rails-erd"
+  gem 'railroady'
+  gem "rails-erd"
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 
 group :test do

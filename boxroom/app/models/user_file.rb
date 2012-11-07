@@ -6,6 +6,13 @@ class UserFile < ActiveRecord::Base
 
   attr_accessible :attachment, :attachment_file_name
 
+  include Clafer
+  clafer_model true do
+    subclafer :share_links
+    subclafer_ref :folder
+    subclafers_of_type :string, :file_name, :file_size, :updated_at, :content_type
+  end
+
   validates_attachment_presence :attachment, :message => I18n.t(:blank, :scope => [:activerecord, :errors, :messages])
   validates_presence_of :folder_id
   validates_uniqueness_of :attachment_file_name, :scope => 'folder_id', :message => I18n.t(:exists_already, :scope => [:activerecord, :errors, :messages])

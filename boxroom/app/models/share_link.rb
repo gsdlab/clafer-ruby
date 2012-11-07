@@ -3,6 +3,11 @@ class ShareLink < ActiveRecord::Base
 
   attr_accessible :emails, :link_expires_at
 
+  include Clafer
+  clafer_model false do
+    subclafers_of_type :string, :emails, :link_token,  :link_expires_at
+  end
+
   validates_presence_of :emails, :link_expires_at
   validates_length_of :emails, :maximum => 256
   validate :format_of_emails
