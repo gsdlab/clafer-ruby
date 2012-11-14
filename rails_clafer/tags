@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Associations	associations.rb	/^	module Associations$/;"	m	class:Clafer
+Clafer	associations.rb	/^module Clafer$/;"	m
+Clafer	clafer.rb	/^module Clafer$/;"	m
+Clafer	meta_clafer.rb	/^module Clafer$/;"	m
+CleanRoom	clafer.rb	/^	class CleanRoom$/;"	c	class:Clafer
+MainMethods	clafer.rb	/^	module MainMethods$/;"	m	class:Clafer
+MetaClafer	meta_clafer.rb	/^	class MetaClafer $/;"	c	class:Clafer
+Problem	sample_models.rb	/^class Problem < ActiveRecord::Base$/;"	c
+User	sample_models.rb	/^class User < ActiveRecord::Base$/;"	c
+add_ref_clafer	meta_clafer.rb	/^		def add_ref_clafer(ref_name, clafer_name)$/;"	f	class:Clafer.MetaClafer
+add_subclafer	meta_clafer.rb	/^		def add_subclafer(clafer_name, association, options = {})$/;"	f	class:Clafer.MetaClafer
+belongs_to	clafer.rb	/^		def belongs_to(name, options={})$/;"	f	class:Clafer.CleanRoom
+check_has_many	sample_models.rb	/^def check_has_many$/;"	f
+clafer_model	clafer.rb	/^		def clafer_model(top, &block)$/;"	f	class:Clafer.MainMethods
+default_clafer_opts	clafer.rb	/^		def default_clafer_opts$/;"	f	class:Clafer.CleanRoom
+detect_clafer_options	clafer.rb	/^		def detect_clafer_options( needle )$/;"	f	class:Clafer.CleanRoom
+get_clafer_model	clafer.rb	/^	def get_clafer_model$/;"	f	class:Clafer
+has_and_belongs_to_many	clafer.rb	/^		def has_and_belongs_to_many(name, options = {}, &extension)$/;"	f	class:Clafer.CleanRoom
+has_many	associations.rb	/^		def has_many(name, options = {}, &extension)$/;"	f	class:Clafer.Associations
+has_many	clafer.rb	/^		def has_many(name, options = {}, &extension)$/;"	f	class:Clafer.CleanRoom
+has_one	clafer.rb	/^		def has_one(name, options= {})$/;"	f	class:Clafer.CleanRoom
+included	clafer.rb	/^	def self.included(base)$/;"	F	class:Clafer
+initialize	clafer.rb	/^		def initialize(model, metaclafer)$/;"	f	class:Clafer.CleanRoom
+initialize	meta_clafer.rb	/^		def initialize(klass, top)$/;"	f	class:Clafer.MetaClafer
+metaclafer	clafer.rb	/^		def metaclafer $/;"	f	class:Clafer.MainMethods
+problems	testdb.sql	/^CREATE TABLE "problems" ("id" INTEGER PRIMARY KEY,$/;"	t
+problems.desc	testdb.sql	/^	"user_id"  integer,$/;"	F
+problems.id	testdb.sql	/^CREATE TABLE "problems" ("id" INTEGER PRIMARY KEY,$/;"	F
+problems.user_id	testdb.sql	/^CREATE TABLE "problems" ("id" INTEGER PRIMARY KEY,$/;"	F
+show_all_items	sample_models.rb	/^def show_all_items$/;"	f
+show_single_item	sample_models.rb	/^def show_single_item$/;"	f
+subclafer	clafer.rb	/^		def subclafer( clafer_name, options = {} )$/;"	f	class:Clafer.CleanRoom
+subclafer_ref	clafer.rb	/^		def subclafer_ref( ref_name, clafer_name, options ={})$/;"	f	class:Clafer.CleanRoom
+subclafers	clafer.rb	/^		def subclafers( *args )$/;"	f	class:Clafer.CleanRoom
+subclafers_of_type	clafer.rb	/^		def subclafers_of_type(type, *args)$/;"	f	class:Clafer.CleanRoom
+users	testdb.sql	/^CREATE TABLE "users" ("id" INTEGER PRIMARY KEY, $/;"	t
+users.first_name	testdb.sql	/^CREATE TABLE "users" ("id" INTEGER PRIMARY KEY, $/;"	F
+users.id	testdb.sql	/^CREATE TABLE "users" ("id" INTEGER PRIMARY KEY, $/;"	F
+users.last_name	testdb.sql	/^	"first_name"      varchar(255), $/;"	F
