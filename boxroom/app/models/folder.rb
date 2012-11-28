@@ -1,14 +1,11 @@
 class Folder < ActiveRecord::Base
   acts_as_tree :order => 'name'
 
-  has_many :user_files, :dependent => :destroy, :order => 'attachment_file_name'
-  has_many :permissions, :dependent => :destroy
-
   include Clafer
-  clafer_model true do
-    subclafers :user_files, :permissions
-    subclafers_of_type :string, :name 
-    # subclafer_ref :shared_links, :through => :user_files
+  clafer do
+    has_many :user_files, :dependent => :destroy, :order => 'attachment_file_name'
+    has_many :permissions, :dependent => :destroy
+    constraint "[#this.UserFile<100]"
   end
 
 

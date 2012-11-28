@@ -1,14 +1,11 @@
 class Group < ActiveRecord::Base
-  has_many :permissions, :dependent => :destroy
-  has_and_belongs_to_many :users
 
   attr_accessible :name
 
   include Clafer
-  clafer_model true do
-    subclafers_of_type :string, :name 
-    subclafer_ref :permissions
-    subclafer_ref :users , {:card => {:min => 0, :max => '10' } } 
+  clafer do
+    has_many :permissions, :dependent => :destroy
+    has_and_belongs_to_many :users
   end
 
 

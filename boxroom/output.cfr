@@ -1,0 +1,11 @@
+abstract User 
+    groups -> Group *
+abstract Folder 
+    UserFile *
+        ShareLink 
+    permissions -> Permission *
+    [#this.UserFile<100]
+abstract Group 
+    permissions -> Permission *
+    users -> User *
+abstract Permission 

@@ -1,14 +1,10 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :groups
-
   attr_accessor :password_confirmation, :password_required, :dont_clear_reset_password_token
   attr_accessible :name, :email, :password, :password_confirmation, :password_required
 
   include Clafer
-  clafer_model true do
-    subclafer_ref :groups
-    subclafers_of_type :string, :name, :email, :is_admin
-
+  clafer do
+    has_and_belongs_to_many :groups
   end
 
 

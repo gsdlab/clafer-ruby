@@ -19,13 +19,15 @@ module Clafer
   end
 
   def self.print
-    ClaferPrinter.print_clafers self.clafer_model.abstract_clafers
+    claferCode = ClaferPrinter.print_clafers self.clafer_module.abstract_clafers
+    puts claferCode
+    claferCode
   end
 
-  def self.clafer_model
+  def self.clafer_module
     Rails.application.eager_load!
-    clafer_model = ClaferModel::ClaferModel.new ActiveRecord::Base.descendants
-    clafer_model
+    clafer_module = ClaferModel::ClaferModule.new ActiveRecord::Base.descendants
+
   end
 
   class CleanRoom
@@ -42,6 +44,7 @@ module Clafer
       association
     end
 
+
     def has_and_belongs_to_many(name, options = {}, &extension)
       #puts "has many has been called"
       association = @model.has_and_belongs_to_many(name, options, &extension)
@@ -50,9 +53,13 @@ module Clafer
     end
 
     def has_one(name, options= {})
-      association = @model.has(name, options)
+      association = @model.has_one(name, options)
       @metaclafer.add_subclafer(name, association)
       association
+    end
+
+    def constraint(constraintString)
+      @metaclafer.constraint = constraintString
     end
 
     def belongs_to(name, options={})

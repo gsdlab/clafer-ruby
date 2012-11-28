@@ -2,15 +2,12 @@ class UserFile < ActiveRecord::Base
   has_attached_file :attachment, :path => ':rails_root/uploads/:rails_env/:id/:style/:id'
 
   belongs_to :folder
-  has_many :share_links, :dependent => :destroy
 
   attr_accessible :attachment, :attachment_file_name
 
   include Clafer
-  clafer_model true do
-    subclafer :share_links
-    subclafer_ref :folder
-    subclafers_of_type :string, :file_name, :file_size, :updated_at, :content_type
+  clafer do
+    has_one :share_link, :dependent => :destroy
   end
 
   validates_attachment_presence :attachment, :message => I18n.t(:blank, :scope => [:activerecord, :errors, :messages])
