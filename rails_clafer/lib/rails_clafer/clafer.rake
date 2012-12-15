@@ -1,6 +1,7 @@
 namespace :clafer do
   desc "Print Clafer model"
-  task(:print) { Tasks.print }
+  require 'rails_clafer'
+  task(:print) { RailsClafer.print }
 end
 
 task clafer: 'clafer:print'

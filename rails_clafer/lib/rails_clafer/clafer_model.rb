@@ -1,3 +1,11 @@
+require 'rails_clafer/gcard'
+require 'rails_clafer/card'
+require 'rails_clafer/clafer_element'
+require 'rails_clafer/association'
+require 'rails_clafer/ref_clafer'
+require 'rails_clafer/sub_clafer'
+
+
 module RailsClafer
   class ClaferModel
     class << self
