@@ -1,6 +1,6 @@
 require 'rails'
 class ClaferRailtie < Rails::Railtie
   rake_tasks do
-    require 'clafer.rake'
+    require 'rails_clafer/clafer.rake'
   end
 end
