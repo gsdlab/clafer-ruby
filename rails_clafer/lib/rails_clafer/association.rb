@@ -3,8 +3,9 @@ module RailsClafer
     class << self
       def from_ar_assoc(src_class, ar_assoc)
         card = Card.from_ar_assoc ar_assoc
-        assoc = new src_class.name, ar_assoc.klass.name, card
-        assoc.ref_name = ar_assoc.name
+        assoc = new ClaferModel.claferize_name(src_class.name),
+          ClaferModel.claferize_name(ar_assoc.klass.name), card
+        assoc.ref_name = ClaferModel.claferize_name ar_assoc.name if ar_assoc.name
         assoc
       end
     end

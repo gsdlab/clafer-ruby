@@ -28,7 +28,7 @@ module RailsClafer
       end
 
       def calc_abstract_clafer_list()
-        abs_model_map = Hash[ClaferModel.rails_models.collect {|klass| [klass.name, false] }]
+        abs_model_map = Hash[ClaferModel.rails_models.collect {|klass| [ClaferModel.claferize_name(klass.name), false] }]
         #first pass to check if ruby model belongs to more than one model
         abs_model_map.each do |class_name, is_abstract|
           if model_belong_to_mult_models? class_name
@@ -46,7 +46,7 @@ module RailsClafer
 
       def from_rails_models(rails_models)
         # create clafer for each metaclafer and assoc dst if not already exists
-        class_mapping = Hash[rails_models.collect {|model_class| [model_class.name, model_class] }]
+        class_mapping = Hash[rails_models.collect {|model_class| [ ClaferModel.claferize_name(model_class.name), model_class] }]
         abs_model_map = calc_abstract_clafer_list
 
         class_mapping.collect do |name, klass|
@@ -61,7 +61,7 @@ module RailsClafer
     attr_accessor :name, :card, :gcard, :constraint
     def initialize(name, ruby_class, is_abstract)
       @is_abstract = is_abstract
-      @name = name
+      @name = ClaferModel.claferize_name name
       @klass = ruby_class
       @gcard = GCard.new
       @card = Card.new

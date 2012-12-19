@@ -54,6 +54,9 @@ module RailsClafer
         @rails_models ||= ActiveRecord::Base.descendants
       end
 
+      def claferize_name(class_name)
+        class_name.to_s.gsub("::", "__")
+      end
     end
 
   end
